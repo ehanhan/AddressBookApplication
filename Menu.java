@@ -1,5 +1,4 @@
 /**
- * @author ehabh
  * This is the Menu class
  * This class controls most of the User interface
  * It starts with the Run method which has a continuous
@@ -21,12 +20,20 @@
  * e) Listing - Prints a list of all contacts currently stored
  *
  * f) Quit - Exit the program
+ *
+ * @author ehabh
  */
 
 import java.util.*;
 
 public class Menu {
 
+    /**
+     * Runs the main menu and executes each of the
+     * user's inputted choices
+     *
+     * @param ab Passes in the Address Book object
+     */
     public static void Run(AddressBook ab) {
         char choice = '0';
 
@@ -58,6 +65,11 @@ public class Menu {
 
     }
 
+    /**
+     * prompts the user to select an option from the menu
+     *
+     * @return returns the user's menu choice
+     */
     public static char PromptChoice() {
 
         System.out.print("\n***************************************\n");
@@ -77,6 +89,11 @@ public class Menu {
         return choice;
     }
 
+    /**
+     * Prompts the user for an input file name
+     *
+     * @return returns the file name entered by the user
+     */
     public static String PromptFileName() {
         System.out.print("Enter in File Name: \n");
         Scanner readFileName = new Scanner(System.in);
@@ -85,6 +102,12 @@ public class Menu {
         return filename;
     }
 
+    /**
+     * Allows the user to manually add an entry
+     * by prompting them for user input for each varriable
+     *
+     * @param ab Passes in the Addressbook object
+     */
     public static void Addition(AddressBook ab) {
 
         Scanner sc = new Scanner(System.in);
@@ -130,6 +153,13 @@ public class Menu {
 
     }
 
+    /**
+     * Takes in a user input string and displays all
+     * entries with the same last name prompting the user
+     * for a choice to delete one of the entries
+     *
+     * @param ab Passes in the Address Book object
+     */
     public static void Removal(AddressBook ab) {
 
         System.out.print("Enter in Last Name of contact to remove:\n>");
@@ -163,6 +193,12 @@ public class Menu {
         }
     }
 
+    /**
+     * takes in a string from user input and displays entries with a last name
+     * that matches that string up to 2 letters
+     *
+     * @param ab Passes in the Address Book Object
+     */
     public static void Find(AddressBook ab) {
         List<AddressEntry> tempList = new ArrayList<>();
         boolean found = false;
@@ -196,10 +232,17 @@ public class Menu {
         }
     }
 
+    /**
+     * Calls the print function to print the entire list of entries
+     * @param ab passes in the Address Book object
+     */
     public static void Listing(AddressBook ab) {
         ab.list();
     }
 
+    /**
+     * Quits the program
+     */
     public static void Quit() {
         System.exit(0);
     }

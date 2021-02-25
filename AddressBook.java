@@ -1,9 +1,10 @@
 /**
- * @author ehabh
  * This is the Address Book object
  * This object first creates a List of Address Entry Objects
  * and has methods to add an entry to the list, remove it,
  * display a list of all addresses, or read in Addresses from file
+ *
+ * @author ehabh
  */
 
 import java.io.File;
@@ -11,23 +12,37 @@ import java.util.*;
 
 public class AddressBook {
 
+    /* List of Address Entries */
     List<AddressEntry> addressEntryList = new ArrayList<>();
 
+    /* Prints the List of entries */
     public void list() {
         for (AddressEntry addressEntry : addressEntryList) {
             System.out.print(addressEntry.toString());
         }
     }
 
+    /**
+     *
+     * @param entry Address entry
+     */
     public void add(AddressEntry entry) {
 
         addressEntryList.add(entry);
     }
 
+    /**
+     *
+     * @param entry Address entry
+     */
     public void remove(AddressEntry entry) {
         addressEntryList.remove(entry);
     }
 
+    /**
+     *
+     * @param filename Name of the input file
+     */
     public void readFromFile(String filename) {
 
         int counter = 0;
