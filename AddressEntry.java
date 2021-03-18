@@ -1,190 +1,299 @@
+package com.company;
+
 /**
- * This is the Address Entry Object Class
- * This object holds all the variables
- * Neccesary to store a contact
+ * AddressEntry is an Object that holds 7 Strings and 1 Integer, meant to
+ * represent the address of someone, and then placed into a list of other
+ * Address Entries using the Address Book class.
  *
- * @author ehabh
+ * @author  Michael LaRussa
+ * @since   2/15/2021
  */
-public class AddressEntry {
 
-    /* PRIVATE VARIABLES */
-    private String firstName;
-    private String lastName;
-    private String street;
-    private String city;
-    private String state;
-    private int zipcode;
-    private String email;
-    private String phone;
+public class AddressEntry implements Comparable<AddressEntry>{
 
-    /* DEFAULT CONSTRUCTOR */
-    public AddressEntry() {
+    /**
+     * Holds a String for a first name.
+     */
+    public String firstName;
+    /**
+     * Holds a String for a last name.
+     */
+    public String lastName;
+    /**
+     * Holds a String for a street.
+     */
+    public String street;
+    /**
+     * Holds a String for a city.
+     */
+    public String city;
+    /**
+     * Holds a String for a state.
+     */
+    public String state;
+    /**
+     * Holds an Integer for a zip code.
+     */
+    public Integer zip;
+    /**
+     * Holds a String for a phone number.
+     */
+    public String phone;
+    /**
+     * Holds a String for an email.
+     */
+    public String email;
+
+    /**
+     * Address Entry Initializer
+     * This is the initializing call, and will be performed whenever
+     * an Address Entry is created.
+     */
+    public AddressEntry()
+    {
         firstName = "";
         lastName = "";
         street = "";
         city = "";
         state = "";
-        zipcode = 0;
-        email = "";
+        zip = 0;
         phone = "";
+        email = "";
     }
 
     /**
-     * CONSTRUCTOR
-     * @param fn first name
-     * @param ln last name
-     * @param str street address
-     * @param cit city
-     * @param sta state
-     * @param zip zipcode
-     * @param eml email
-     * @param pnum phone number
+     * Address Entry Initializer
+     * This initializer takes input in the form of parameters to be
+     * placed into their respective variables inside of the Address Entry.
+     *
+     * @param fn String parameter, to be placed into firstName.
+     * @param ln String parameter, to be placed into lastName.
+     * @param ci String parameter, to be placed into city.
+     * @param str String parameter, to be placed into street.
+     * @param sta String parameter, to be placed into state.
+     * @param zi Inteher parameter, to be placed into zip.
+     * @param ph String parameter, to be placed into phone.
+     * @param em String parameter, to be placed into email.
      */
-    public AddressEntry(String fn, String ln, String str, String cit, String sta, int zip, String eml, String pnum) {
+
+    public AddressEntry(String fn, String ln, String str, String ci, String sta, Integer zi, String ph, String em) {
         firstName = fn;
         lastName = ln;
         street = str;
-        city = cit;
+        city = ci;
         state = sta;
-        zipcode = zip;
-        email = eml;
-        phone = pnum;
+        zip = zi;
+        phone = ph;
+        email = em;
+    }
+
+
+    /**
+     * Extending the Comparable.java method compareTo, to allow our sorting to work.
+     * @param ae Simply the other address entry to compare to.
+     * @return determines if something is higher or lower than another object.
+     */
+    public int compareTo(AddressEntry ae)
+    {
+        if(lastName.compareToIgnoreCase(ae.lastName) > 0) {
+            return 1;
+        }
+        else if(lastName.compareToIgnoreCase(ae.lastName) < 0) {
+            return -1;
+        }
+        else if(lastName.compareToIgnoreCase(ae.lastName) == 0) {
+            return 0;
+        }
+        System.out.println("An Error occurred when comparing.");
+        return 0;
     }
 
     /**
-     *
-     * @return toString Collects each AddressEntry Variable into a concise String
+     * toString Method
+     * This method simply turns the Address Entry into a String.
+     * @return Returns a formatted string containing all variables present in this Address Entry.
      */
-    public String toString() {
-        return (this.firstName + " " + this.lastName + "\n"
-                + this.street + " " + this.city + ", " + this.state + " " + this.zipcode + "\n"
-                + this.email + "\n" + this.phone + "\n\n");
+    public String toString()
+    {
+        return "\nFirst Name: " + firstName + "\nLast Name: " + lastName + "\nStreet: " + street + "\nCity: " + city + "\nState: " + state + "\nZip: " + zip.toString() + "\nPhone: " + phone + "\nEmail: " + email;
     }
 
     /**
-     * @param fn firstname
+     * setFirstName Method
+     * Simply takes a value as a parameter, and places it into firstName.
+     * @param fn String parameter, to be placed into firstName.
      */
-    public void setFirstName (String fn) {
-        this.firstName = fn;
+
+    public void setFirstName(String fn)
+    {
+        firstName = fn;
     }
 
     /**
-     *
-     * @param ln lastname
+     * setLastName Method
+     * Simply takes a value as a parameter, and places it into lastName.
+     * @param ln String parameter, to be placed into lastName.
      */
-    public void setLastName (String ln) {
-        this.lastName = ln;
+
+    public void setLastName(String ln)
+    {
+        lastName = ln;
     }
 
     /**
-     *
-     * @param str street_address
+     * setState Method
+     * Simply takes a value as a parameter, and places it into street.
+     * @param str String parameter, to be placed into street.
      */
-    public void setStreet (String str) {
-        this.street = str;
+
+    public void setStreet(String str)
+    {
+        street = str;
     }
 
     /**
-     *
-     * @param cit city
+     * setCity Method
+     * Simply takes a value as a parameter, and places it into city.
+     * @param ci String parameter, to be placed into city.
      */
-    public void setCity (String cit) {
-        this.city = cit;
+
+    public void setCity(String ci)
+    {
+        city = ci;
     }
 
     /**
-     *
-     * @param sta state
+     * setState Method
+     * Simply takes a value as a parameter, and places it into state.
+     * @param sta String parameter, to be placed into state.
      */
-    public void setState (String sta) {
-        this.state = sta;
+
+    public void setState(String sta)
+    {
+        state = sta;
     }
 
     /**
-     *
-     * @param zip zipcode
+     * setZip Method
+     * Simply takes a value as a parameter, and places it into zip.
+     * @param zi String parameter, to be placed into zip.
      */
-    public void setZipcode (int zip) {
-        this.zipcode = zip;
+
+    public void setZip(Integer zi)
+    {
+        zip = zi;
     }
 
     /**
-     *
-     * @param eml email
+     * setPhone Method
+     * Simply takes a value as a parameter, and places it into phone.
+     * @param ph String parameter, to be placed into phone.
      */
-    public void setEmail (String eml) {
-        this.email = eml;
+
+    public void setPhone(String ph)
+    {
+        phone = ph;
     }
 
     /**
-     *
-     * @param pnum phone_number
+     * setEmail Method
+     * Simply takes a value as a parameter, and places it into email.
+     * @param em String parameter, to be placed into email.
      */
-    public void setPhone (String pnum) {
-        this.phone = pnum;
+
+    public void setEmail(String em)
+    {
+        email = em;
     }
 
     /**
-     *
-     * @return first name
+     * getFirstName Method
+     * Simply returns the String value of firstName.
+     * @return Returns the value of firstName
      */
-    public String getFirstName() {
-        return this.firstName;
+
+    public String getFirstName()
+    {
+        return firstName;
     }
 
     /**
-     *
-     * @return last name
+     * getLastName Method
+     * Simply returns the String value of lastName.
+     * @return Returns the value of lastName
      */
-    public String getLastName() {
-        return this.lastName;
+
+    public String getLastName()
+    {
+        return lastName;
     }
 
     /**
-     *
-     * @return street address
+     * getStreet Method
+     * Simply returns the String value of street.
+     * @return Returns the value of street
      */
-    public String getStreet() {
-        return this.street;
+
+    public String getStreet()
+    {
+        return street;
     }
 
     /**
-     *
-     * @return city
+     * getCity Method
+     * Simply returns the String value of city.
+     * @return Returns the value of city
      */
-    public String getCity() {
-        return this.city;
+
+    public String getCity()
+    {
+        return city;
     }
 
     /**
-     *
-     * @return state
+     * getState Method
+     * Simply returns the String value of state.
+     * @return Returns the value of state
      */
-    public String getState() {
-        return this.state;
+
+    public String getState()
+    {
+        return state;
     }
 
     /**
-     *
-     * @return zipcode
+     * getZip Method
+     * Simply returns the Integer value of zip.
+     * @return Returns the value of zip
      */
-    public int getZipcode() {
-        return this.zipcode;
+
+    public Integer getZip()
+    {
+        return zip;
     }
 
     /**
-     *
-     * @return email
+     * getPhone Method
+     * Simply returns the String value of phone.
+     * @return Returns the value of phone
      */
-    public String getEmail() {
-        return this.email;
+
+    public String getPhone()
+    {
+        return phone;
     }
 
     /**
-     *
-     * @return phone number
+     * getEmail Method
+     * Simply returns the String value of email.
+     * @return Returns the value of email
      */
-    public String getPhone() {
-        return this.phone;
+
+    public String getEmail()
+    {
+        return email;
     }
+
+
+
 }
